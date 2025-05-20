@@ -4,17 +4,12 @@ const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const { Pool } = require('pg');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 
 // Import routes
-const authRoutes = require('./routes/authRoutes');
-// const boardRoutes = require('./routes/boards');
-// const listRoutes = require('./routes/lists');
-// const cardRoutes = require('./routes/cards');
-// const userRoutes = require('./routes/users');
+const cardRoutes = require('./routes/cardRoutes');
 
 // Initialize environment variables
 dotenv.config();
@@ -35,10 +30,7 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 
 // Database connection
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
-});
+
 
 // Make db available to routes
 app.use((req, res, next) => {
@@ -46,21 +38,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// API Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/boards', boardRoutes);
-app.use('/api/lists', listRoutes);
-app.use('/api/cards', cardRoutes);
-app.use('/api/users', userRoutes);
 
-// Serve static files in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-  
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  });
-}
+// API Routes
+app.use('/api/card', cardRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -83,8 +63,15 @@ const io = new Server(server, {
 // Import and setup Socket.IO handlers
 require('./socket')(io, pool);
 
+// Clean up Prisma connection when server shuts down
+process.on('SIGINT', async () => {
+    await prisma.$disconnect();
+    process.exit();
+  });
+  
+
 // Start server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 6000;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

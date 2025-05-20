@@ -120,14 +120,6 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.BoardScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  description: 'description',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
 exports.Prisma.CardScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -153,7 +145,6 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  Board: 'Board',
   Card: 'Card'
 };
 

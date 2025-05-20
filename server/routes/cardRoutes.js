@@ -1,34 +1,31 @@
 const express = require("express");
 const db = require("../db/db");
 // const roverController = require("../controllers/rover")
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
-app.get("/:id", async (req, res, next) => {
-  const result = await db.query("SELECT * FROM card WHERE id = $1", [
-    req.params.id,
-  ]);
-  res.send(result.rows[0]);
-});
+const prisma = require("../db/prisma");
+const app = express();
 
-app.get("/hello", async (req, res, next) => {
+cardRouter = express.Router(); // Create the router instance
+
+cardRouter.get("/hello", async (req, res, next) => {
   console.log("hello");
+  res.send("Hello, world!");
 });
 
-app.post('/card', async (req, res) => {
-    const { title, description, } = req.body;
-    try {
-      const post = await prisma.post.create({
-        data: {
-          title,
-          content,
-          published: published || false,
-          author: { connect: { id: authorId } }
-        }
-      });
-      res.status(201).json(post);
-    } catch (error) {
-      res.status(500).json({ error: error.message });
-    }
-  });
+cardRouter.post('/card', async (req, res) => {
+  const { title, description, published, authorId } = req.body;
+  try {
+    const post = await prisma.post.create({
+      data: {
+        title,
+        content: description, // Assuming "description" maps to "content"
+        published: published || false,
+        author: { connect: { id: authorId } }
+      }
+    });
+    res.status(201).json(post);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
-module.exports = cardRouter;
+module.exports = cardRouter; // Export the router

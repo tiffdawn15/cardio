@@ -14,11 +14,6 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model Board
- * 
- */
-export type Board = $Result.DefaultSelection<Prisma.$BoardPayload>
-/**
  * Model Card
  * 
  */
@@ -31,8 +26,8 @@ export type Card = $Result.DefaultSelection<Prisma.$CardPayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Boards
- * const boards = await prisma.board.findMany()
+ * // Fetch zero or more Cards
+ * const cards = await prisma.card.findMany()
  * ```
  *
  *
@@ -52,8 +47,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Boards
-   * const boards = await prisma.board.findMany()
+   * // Fetch zero or more Cards
+   * const cards = await prisma.card.findMany()
    * ```
    *
    *
@@ -150,16 +145,6 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.board`: Exposes CRUD operations for the **Board** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Boards
-    * const boards = await prisma.board.findMany()
-    * ```
-    */
-  get board(): Prisma.BoardDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.card`: Exposes CRUD operations for the **Card** model.
     * Example usage:
     * ```ts
@@ -608,7 +593,6 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Board: 'Board',
     Card: 'Card'
   };
 
@@ -628,84 +612,10 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "board" | "card"
+      modelProps: "card"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      Board: {
-        payload: Prisma.$BoardPayload<ExtArgs>
-        fields: Prisma.BoardFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.BoardFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.BoardFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>
-          }
-          findFirst: {
-            args: Prisma.BoardFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.BoardFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>
-          }
-          findMany: {
-            args: Prisma.BoardFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>[]
-          }
-          create: {
-            args: Prisma.BoardCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>
-          }
-          createMany: {
-            args: Prisma.BoardCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.BoardCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>[]
-          }
-          delete: {
-            args: Prisma.BoardDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>
-          }
-          update: {
-            args: Prisma.BoardUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>
-          }
-          deleteMany: {
-            args: Prisma.BoardDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.BoardUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.BoardUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>[]
-          }
-          upsert: {
-            args: Prisma.BoardUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BoardPayload>
-          }
-          aggregate: {
-            args: Prisma.BoardAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateBoard>
-          }
-          groupBy: {
-            args: Prisma.BoardGroupByArgs<ExtArgs>
-            result: $Utils.Optional<BoardGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.BoardCountArgs<ExtArgs>
-            result: $Utils.Optional<BoardCountAggregateOutputType> | number
-          }
-        }
-      }
       Card: {
         payload: Prisma.$CardPayload<ExtArgs>
         fields: Prisma.CardFieldRefs
@@ -864,7 +774,6 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    board?: BoardOmit
     card?: CardOmit
   }
 
@@ -959,1035 +868,6 @@ export namespace Prisma {
   /**
    * Models
    */
-
-  /**
-   * Model Board
-   */
-
-  export type AggregateBoard = {
-    _count: BoardCountAggregateOutputType | null
-    _avg: BoardAvgAggregateOutputType | null
-    _sum: BoardSumAggregateOutputType | null
-    _min: BoardMinAggregateOutputType | null
-    _max: BoardMaxAggregateOutputType | null
-  }
-
-  export type BoardAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type BoardSumAggregateOutputType = {
-    id: number | null
-  }
-
-  export type BoardMinAggregateOutputType = {
-    id: number | null
-    title: string | null
-    description: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type BoardMaxAggregateOutputType = {
-    id: number | null
-    title: string | null
-    description: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type BoardCountAggregateOutputType = {
-    id: number
-    title: number
-    description: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type BoardAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type BoardSumAggregateInputType = {
-    id?: true
-  }
-
-  export type BoardMinAggregateInputType = {
-    id?: true
-    title?: true
-    description?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type BoardMaxAggregateInputType = {
-    id?: true
-    title?: true
-    description?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type BoardCountAggregateInputType = {
-    id?: true
-    title?: true
-    description?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type BoardAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Board to aggregate.
-     */
-    where?: BoardWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Boards to fetch.
-     */
-    orderBy?: BoardOrderByWithRelationInput | BoardOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: BoardWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Boards from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Boards.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Boards
-    **/
-    _count?: true | BoardCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: BoardAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: BoardSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: BoardMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: BoardMaxAggregateInputType
-  }
-
-  export type GetBoardAggregateType<T extends BoardAggregateArgs> = {
-        [P in keyof T & keyof AggregateBoard]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateBoard[P]>
-      : GetScalarType<T[P], AggregateBoard[P]>
-  }
-
-
-
-
-  export type BoardGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BoardWhereInput
-    orderBy?: BoardOrderByWithAggregationInput | BoardOrderByWithAggregationInput[]
-    by: BoardScalarFieldEnum[] | BoardScalarFieldEnum
-    having?: BoardScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: BoardCountAggregateInputType | true
-    _avg?: BoardAvgAggregateInputType
-    _sum?: BoardSumAggregateInputType
-    _min?: BoardMinAggregateInputType
-    _max?: BoardMaxAggregateInputType
-  }
-
-  export type BoardGroupByOutputType = {
-    id: number
-    title: string
-    description: string
-    createdAt: Date
-    updatedAt: Date
-    _count: BoardCountAggregateOutputType | null
-    _avg: BoardAvgAggregateOutputType | null
-    _sum: BoardSumAggregateOutputType | null
-    _min: BoardMinAggregateOutputType | null
-    _max: BoardMaxAggregateOutputType | null
-  }
-
-  type GetBoardGroupByPayload<T extends BoardGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<BoardGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof BoardGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], BoardGroupByOutputType[P]>
-            : GetScalarType<T[P], BoardGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type BoardSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["board"]>
-
-  export type BoardSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["board"]>
-
-  export type BoardSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["board"]>
-
-  export type BoardSelectScalar = {
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type BoardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["board"]>
-
-  export type $BoardPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Board"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      title: string
-      description: string
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["board"]>
-    composites: {}
-  }
-
-  type BoardGetPayload<S extends boolean | null | undefined | BoardDefaultArgs> = $Result.GetResult<Prisma.$BoardPayload, S>
-
-  type BoardCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<BoardFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: BoardCountAggregateInputType | true
-    }
-
-  export interface BoardDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Board'], meta: { name: 'Board' } }
-    /**
-     * Find zero or one Board that matches the filter.
-     * @param {BoardFindUniqueArgs} args - Arguments to find a Board
-     * @example
-     * // Get one Board
-     * const board = await prisma.board.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends BoardFindUniqueArgs>(args: SelectSubset<T, BoardFindUniqueArgs<ExtArgs>>): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Board that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {BoardFindUniqueOrThrowArgs} args - Arguments to find a Board
-     * @example
-     * // Get one Board
-     * const board = await prisma.board.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends BoardFindUniqueOrThrowArgs>(args: SelectSubset<T, BoardFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Board that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardFindFirstArgs} args - Arguments to find a Board
-     * @example
-     * // Get one Board
-     * const board = await prisma.board.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends BoardFindFirstArgs>(args?: SelectSubset<T, BoardFindFirstArgs<ExtArgs>>): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Board that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardFindFirstOrThrowArgs} args - Arguments to find a Board
-     * @example
-     * // Get one Board
-     * const board = await prisma.board.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends BoardFindFirstOrThrowArgs>(args?: SelectSubset<T, BoardFindFirstOrThrowArgs<ExtArgs>>): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Boards that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Boards
-     * const boards = await prisma.board.findMany()
-     * 
-     * // Get first 10 Boards
-     * const boards = await prisma.board.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const boardWithIdOnly = await prisma.board.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends BoardFindManyArgs>(args?: SelectSubset<T, BoardFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Board.
-     * @param {BoardCreateArgs} args - Arguments to create a Board.
-     * @example
-     * // Create one Board
-     * const Board = await prisma.board.create({
-     *   data: {
-     *     // ... data to create a Board
-     *   }
-     * })
-     * 
-     */
-    create<T extends BoardCreateArgs>(args: SelectSubset<T, BoardCreateArgs<ExtArgs>>): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Boards.
-     * @param {BoardCreateManyArgs} args - Arguments to create many Boards.
-     * @example
-     * // Create many Boards
-     * const board = await prisma.board.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends BoardCreateManyArgs>(args?: SelectSubset<T, BoardCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Boards and returns the data saved in the database.
-     * @param {BoardCreateManyAndReturnArgs} args - Arguments to create many Boards.
-     * @example
-     * // Create many Boards
-     * const board = await prisma.board.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Boards and only return the `id`
-     * const boardWithIdOnly = await prisma.board.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends BoardCreateManyAndReturnArgs>(args?: SelectSubset<T, BoardCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Board.
-     * @param {BoardDeleteArgs} args - Arguments to delete one Board.
-     * @example
-     * // Delete one Board
-     * const Board = await prisma.board.delete({
-     *   where: {
-     *     // ... filter to delete one Board
-     *   }
-     * })
-     * 
-     */
-    delete<T extends BoardDeleteArgs>(args: SelectSubset<T, BoardDeleteArgs<ExtArgs>>): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Board.
-     * @param {BoardUpdateArgs} args - Arguments to update one Board.
-     * @example
-     * // Update one Board
-     * const board = await prisma.board.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends BoardUpdateArgs>(args: SelectSubset<T, BoardUpdateArgs<ExtArgs>>): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Boards.
-     * @param {BoardDeleteManyArgs} args - Arguments to filter Boards to delete.
-     * @example
-     * // Delete a few Boards
-     * const { count } = await prisma.board.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends BoardDeleteManyArgs>(args?: SelectSubset<T, BoardDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Boards.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Boards
-     * const board = await prisma.board.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends BoardUpdateManyArgs>(args: SelectSubset<T, BoardUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Boards and returns the data updated in the database.
-     * @param {BoardUpdateManyAndReturnArgs} args - Arguments to update many Boards.
-     * @example
-     * // Update many Boards
-     * const board = await prisma.board.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Boards and only return the `id`
-     * const boardWithIdOnly = await prisma.board.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends BoardUpdateManyAndReturnArgs>(args: SelectSubset<T, BoardUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Board.
-     * @param {BoardUpsertArgs} args - Arguments to update or create a Board.
-     * @example
-     * // Update or create a Board
-     * const board = await prisma.board.upsert({
-     *   create: {
-     *     // ... data to create a Board
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Board we want to update
-     *   }
-     * })
-     */
-    upsert<T extends BoardUpsertArgs>(args: SelectSubset<T, BoardUpsertArgs<ExtArgs>>): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Boards.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardCountArgs} args - Arguments to filter Boards to count.
-     * @example
-     * // Count the number of Boards
-     * const count = await prisma.board.count({
-     *   where: {
-     *     // ... the filter for the Boards we want to count
-     *   }
-     * })
-    **/
-    count<T extends BoardCountArgs>(
-      args?: Subset<T, BoardCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], BoardCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Board.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends BoardAggregateArgs>(args: Subset<T, BoardAggregateArgs>): Prisma.PrismaPromise<GetBoardAggregateType<T>>
-
-    /**
-     * Group by Board.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BoardGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends BoardGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BoardGroupByArgs['orderBy'] }
-        : { orderBy?: BoardGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, BoardGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBoardGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Board model
-   */
-  readonly fields: BoardFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Board.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__BoardClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Board model
-   */
-  interface BoardFieldRefs {
-    readonly id: FieldRef<"Board", 'Int'>
-    readonly title: FieldRef<"Board", 'String'>
-    readonly description: FieldRef<"Board", 'String'>
-    readonly createdAt: FieldRef<"Board", 'DateTime'>
-    readonly updatedAt: FieldRef<"Board", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Board findUnique
-   */
-  export type BoardFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Board
-     */
-    omit?: BoardOmit<ExtArgs> | null
-    /**
-     * Filter, which Board to fetch.
-     */
-    where: BoardWhereUniqueInput
-  }
-
-  /**
-   * Board findUniqueOrThrow
-   */
-  export type BoardFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Board
-     */
-    omit?: BoardOmit<ExtArgs> | null
-    /**
-     * Filter, which Board to fetch.
-     */
-    where: BoardWhereUniqueInput
-  }
-
-  /**
-   * Board findFirst
-   */
-  export type BoardFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Board
-     */
-    omit?: BoardOmit<ExtArgs> | null
-    /**
-     * Filter, which Board to fetch.
-     */
-    where?: BoardWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Boards to fetch.
-     */
-    orderBy?: BoardOrderByWithRelationInput | BoardOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Boards.
-     */
-    cursor?: BoardWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Boards from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Boards.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Boards.
-     */
-    distinct?: BoardScalarFieldEnum | BoardScalarFieldEnum[]
-  }
-
-  /**
-   * Board findFirstOrThrow
-   */
-  export type BoardFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Board
-     */
-    omit?: BoardOmit<ExtArgs> | null
-    /**
-     * Filter, which Board to fetch.
-     */
-    where?: BoardWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Boards to fetch.
-     */
-    orderBy?: BoardOrderByWithRelationInput | BoardOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Boards.
-     */
-    cursor?: BoardWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Boards from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Boards.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Boards.
-     */
-    distinct?: BoardScalarFieldEnum | BoardScalarFieldEnum[]
-  }
-
-  /**
-   * Board findMany
-   */
-  export type BoardFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Board
-     */
-    omit?: BoardOmit<ExtArgs> | null
-    /**
-     * Filter, which Boards to fetch.
-     */
-    where?: BoardWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Boards to fetch.
-     */
-    orderBy?: BoardOrderByWithRelationInput | BoardOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Boards.
-     */
-    cursor?: BoardWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Boards from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Boards.
-     */
-    skip?: number
-    distinct?: BoardScalarFieldEnum | BoardScalarFieldEnum[]
-  }
-
-  /**
-   * Board create
-   */
-  export type BoardCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Board
-     */
-    omit?: BoardOmit<ExtArgs> | null
-    /**
-     * The data needed to create a Board.
-     */
-    data: XOR<BoardCreateInput, BoardUncheckedCreateInput>
-  }
-
-  /**
-   * Board createMany
-   */
-  export type BoardCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Boards.
-     */
-    data: BoardCreateManyInput | BoardCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Board createManyAndReturn
-   */
-  export type BoardCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Board
-     */
-    omit?: BoardOmit<ExtArgs> | null
-    /**
-     * The data used to create many Boards.
-     */
-    data: BoardCreateManyInput | BoardCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Board update
-   */
-  export type BoardUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Board
-     */
-    omit?: BoardOmit<ExtArgs> | null
-    /**
-     * The data needed to update a Board.
-     */
-    data: XOR<BoardUpdateInput, BoardUncheckedUpdateInput>
-    /**
-     * Choose, which Board to update.
-     */
-    where: BoardWhereUniqueInput
-  }
-
-  /**
-   * Board updateMany
-   */
-  export type BoardUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Boards.
-     */
-    data: XOR<BoardUpdateManyMutationInput, BoardUncheckedUpdateManyInput>
-    /**
-     * Filter which Boards to update
-     */
-    where?: BoardWhereInput
-    /**
-     * Limit how many Boards to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Board updateManyAndReturn
-   */
-  export type BoardUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Board
-     */
-    omit?: BoardOmit<ExtArgs> | null
-    /**
-     * The data used to update Boards.
-     */
-    data: XOR<BoardUpdateManyMutationInput, BoardUncheckedUpdateManyInput>
-    /**
-     * Filter which Boards to update
-     */
-    where?: BoardWhereInput
-    /**
-     * Limit how many Boards to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Board upsert
-   */
-  export type BoardUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Board
-     */
-    omit?: BoardOmit<ExtArgs> | null
-    /**
-     * The filter to search for the Board to update in case it exists.
-     */
-    where: BoardWhereUniqueInput
-    /**
-     * In case the Board found by the `where` argument doesn't exist, create a new Board with this data.
-     */
-    create: XOR<BoardCreateInput, BoardUncheckedCreateInput>
-    /**
-     * In case the Board was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<BoardUpdateInput, BoardUncheckedUpdateInput>
-  }
-
-  /**
-   * Board delete
-   */
-  export type BoardDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Board
-     */
-    omit?: BoardOmit<ExtArgs> | null
-    /**
-     * Filter which Board to delete.
-     */
-    where: BoardWhereUniqueInput
-  }
-
-  /**
-   * Board deleteMany
-   */
-  export type BoardDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Boards to delete
-     */
-    where?: BoardWhereInput
-    /**
-     * Limit how many Boards to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Board without action
-   */
-  export type BoardDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Board
-     */
-    select?: BoardSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Board
-     */
-    omit?: BoardOmit<ExtArgs> | null
-  }
-
 
   /**
    * Model Card
@@ -3032,17 +1912,6 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const BoardScalarFieldEnum: {
-    id: 'id',
-    title: 'title',
-    description: 'description',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type BoardScalarFieldEnum = (typeof BoardScalarFieldEnum)[keyof typeof BoardScalarFieldEnum]
-
-
   export const CardScalarFieldEnum: {
     id: 'id',
     title: 'title',
@@ -3142,60 +2011,6 @@ export namespace Prisma {
    */
 
 
-  export type BoardWhereInput = {
-    AND?: BoardWhereInput | BoardWhereInput[]
-    OR?: BoardWhereInput[]
-    NOT?: BoardWhereInput | BoardWhereInput[]
-    id?: IntFilter<"Board"> | number
-    title?: StringFilter<"Board"> | string
-    description?: StringFilter<"Board"> | string
-    createdAt?: DateTimeFilter<"Board"> | Date | string
-    updatedAt?: DateTimeFilter<"Board"> | Date | string
-  }
-
-  export type BoardOrderByWithRelationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type BoardWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    title?: string
-    AND?: BoardWhereInput | BoardWhereInput[]
-    OR?: BoardWhereInput[]
-    NOT?: BoardWhereInput | BoardWhereInput[]
-    description?: StringFilter<"Board"> | string
-    createdAt?: DateTimeFilter<"Board"> | Date | string
-    updatedAt?: DateTimeFilter<"Board"> | Date | string
-  }, "id" | "title">
-
-  export type BoardOrderByWithAggregationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: BoardCountOrderByAggregateInput
-    _avg?: BoardAvgOrderByAggregateInput
-    _max?: BoardMaxOrderByAggregateInput
-    _min?: BoardMinOrderByAggregateInput
-    _sum?: BoardSumOrderByAggregateInput
-  }
-
-  export type BoardScalarWhereWithAggregatesInput = {
-    AND?: BoardScalarWhereWithAggregatesInput | BoardScalarWhereWithAggregatesInput[]
-    OR?: BoardScalarWhereWithAggregatesInput[]
-    NOT?: BoardScalarWhereWithAggregatesInput | BoardScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Board"> | number
-    title?: StringWithAggregatesFilter<"Board"> | string
-    description?: StringWithAggregatesFilter<"Board"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Board"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Board"> | Date | string
-  }
-
   export type CardWhereInput = {
     AND?: CardWhereInput | CardWhereInput[]
     OR?: CardWhereInput[]
@@ -3248,59 +2063,6 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Card"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Card"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Card"> | Date | string
-  }
-
-  export type BoardCreateInput = {
-    title: string
-    description: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type BoardUncheckedCreateInput = {
-    id?: number
-    title: string
-    description: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type BoardUpdateInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type BoardUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type BoardCreateManyInput = {
-    id?: number
-    title: string
-    description: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type BoardUpdateManyMutationInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type BoardUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CardCreateInput = {
@@ -3382,97 +2144,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type BoardCountOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type BoardAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type BoardMaxOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type BoardMinOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type BoardSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -3486,6 +2157,17 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type SortOrderInput = {
@@ -3525,6 +2207,40 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -3543,8 +2259,26 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -3557,10 +2291,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -3586,6 +2316,20 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -3643,34 +2387,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -3697,6 +2413,20 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
 
